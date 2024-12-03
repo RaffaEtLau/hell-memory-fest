@@ -22,23 +22,25 @@
     <form id="hellUser">
       <div>
         <label for="nomUser">Nom de démon</label><br>
-        <input type="name" id="nomUser" required>
+        <input type="name" id="nomUser" placeholder="Satan" required>
         <div id="nameError" class="error"></div>
       </div>
       <div>
         <label for="emailUser">Entrez votre email</label><br>
-        <input type="email" id="emailUser" required>
+        <input type="email" id="emailUser" placeholder="satan.enfer@hellfest.com" required>
         <div id="emailError" class="error"></div>
       </div>
       <div>
         <label for="passwordUser">Mot de passe</label><br>
         <input type="password" id="passwordUser" required>
         <div id="passwordError" class="error"></div>
+        <div id="levelPassword"></div>
       </div>
       <div>
         <label for="checkPasswordUser">Confirmez le mot de passe</label><br>
         <input type="password" id="checkPasswordUser" required>
         <div id="checkPasswordError" class="error"></div>
+        <div id="levelPassword"></div>
       </div>
       <button type="submit">Création du pass pour l'enfer</button>
       <button type="reset">Retour au monde des bisounours</button>

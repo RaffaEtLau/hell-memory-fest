@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hell-Inscription</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- banderole helfest -->
+    <img src="" alt="banderole hellfest" style="width: auto; border: none" />
+    <h1>Profil</h1>
+    <nav>
+      <a href="acceuil.html">Accueil</a>
+      <a href="inscription.html">Inscription</a>
+      <a href="connexion.html">Connexion</a>
+      <a href="profil.html">Profil</a>
+      <a href="jeu.html">Highway to hell !</a>
+    </nav>
+    <form id="profilUser">
+      <div>
+        <label for="nomUser">Nom de démon</label><br />
+        <input type="name" id="nomUser" placeholder="Satan" required />
+        <div id="nameError" class="error"></div>
+      </div>
+      <div>
+        <label for="emailUser">Entrez votre email</label><br />
+        <input
+          type="email"
+          id="emailUser"
+          placeholder="satan.enfer@hellfest.com"
+          required
+        />
+        <div id="emailError" class="error"></div>
+      </div>
+      <div>
+        <label for="memoryChoice">Choix du Memory</label>
+        <select name="choices" id="memoryChoice">
+          <option value="">Choisi ton coté obscur</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+        </select>
+        <img src="" alt="" srcset="" />
+      </div>
+      <div>
+        <label for="sizeChoice">Taille du Memory</label>
+        <select name="sizes" id="sizeChoice">
+          <option value="">Motivé ?</option>
+          <option value="3*3">3*3</option>
+          <option value="4*4">4*4</option>
+        </select>
+      </div>
+      <button type="submit">Enregistrer les options</button>
+    </form>
+    <h2>Derniers scores</h2>
+    <table>
+      <tr>
+        <td>Pseudo</td>
+        <td>Score</td>
+        <td>Taille</td>
+        <td>Choix Memory</td>
+        <td>Date</td>
+      </tr>
+      <tr>
+        <td>Satan</td>
+        <td>666</td>
+        <td>3*3</td>
+        <td>Enfer</td>
+        <td>11/11/2024</td>
+      </tr>
+    </table>
+
+    <script type="module" src="js/hell.js"></script>
+  </body>
+</html>
