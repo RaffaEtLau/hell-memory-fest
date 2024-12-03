@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hell-Inscription</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- banderole helfest -->
+  <img src="" alt="banderole hellfest" style="width: auto;border: none;">
+  <h1>Inscription</h1>
+  <nav>
+      <a href="acceuil.html">Accueil</a>
+      <a href="inscription.html">Inscription</a>
+      <a href="connexion.html">Connexion</a>
+      <a href="profil.html">Profil</a>
+      <a href="jeu.html">Highway to hell !</a>
+  </nav>
+  <div>
+    <h2>Entrez dans les ténèbres...</h2>
+    <form id="hellUser">
+      <div>
+        <label for="nomUser">Nom de démon</label><br>
+        <input type="name" id="nomUser" required>
+        <div id="nameError" class="error"></div>
+      </div>
+      <div>
+        <label for="emailUser">Entrez votre email</label><br>
+        <input type="email" id="emailUser" required>
+        <div id="emailError" class="error"></div>
+      </div>
+      <div>
+        <label for="passwordUser">Mot de passe</label><br>
+        <input type="password" id="passwordUser" required>
+        <div id="passwordError" class="error"></div>
+      </div>
+      <div>
+        <label for="checkPasswordUser">Confirmez le mot de passe</label><br>
+        <input type="password" id="checkPasswordUser" required>
+        <div id="checkPasswordError" class="error"></div>
+      </div>
+      <button type="submit">Création du pass pour l'enfer</button>
+      <button type="reset">Retour au monde des bisounours</button>
+    </form>
+  </div>
+
+
+
+  <script type="module" src="js/hell.js"></script>
+</body>
+</html>
