@@ -46,7 +46,7 @@ p{
   padding: 8px 16px;
   font-size: 30px;
   border-radius: 10px;
-  background-color: red;
+  background-color: rgb(0, 0, 0);
   color: whitesmoke;
 }
 
@@ -94,8 +94,13 @@ p{
 }
 
 .card .back {
-  background-image: url();
+  background-image: url(../img/question.svg);
   background-position: center center;
   background-size: cover;
+  backface-visibility: hidden;
+}
+
+.card .front {
+  transform: rotateY(180deg);
 }
 
