@@ -1,43 +1,130 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Highway to hell !</title>
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-  <header>
-    <!-- banderole helfest -->
-    <img src="" alt="banderole hellfest" style="width: auto;border: none;">
-    <nav>
-      <a href="acceuil.html">Accueil</a>
-      <a href="inscription.html">Inscription</a>
-      <a href="connexion.html">Connexion</a>
-      <a href="profil.html">Profil</a>
-      <a href="jeu.html">Highway to hell !</a>
-    </nav>
-    <h1>Memory de l'enfer</h1>
-  </header>
-  <p>Tentez de gagner avec le moins d'essais possible. <br>
-  Appuyer sur la <strong>barre d'espace</strong> pour relancer le jeu.</p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Highway to hell !</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header>
+      <!-- banderole helfest -->
+      <img src="" alt="banderole hellfest" style="width: auto; border: none" />
+      <nav>
+        <a href="acceuil.html">Accueil</a>
+        <a href="inscription.html">Inscription</a>
+        <a href="connexion.html">Connexion</a>
+        <a href="profil.html">Profil</a>
+        <a href="jeu.html">Highway to hell !</a>
+      </nav>
+      <h1>Memory de l'enfer</h1>
+    </header>
+    <main>
+      <p>
+        Tentez de gagner avec le moins d'essais possible. <br />
+        Appuyer sur la <strong>barre d'espace</strong> pour relancer le jeu.
+      </p>
+      <div>
+        <br />Nombre de coups : <span id="clickcount">0</span> <br />Temps :
+        <input
+          type="text"
+          name="chronotime"
+          id="chronotime"
+          value="00:00:000"
+        />
+      </div>
+      <div>
+        <p>
+          Meilleur score : <span id="best">0</span> coups <br />Meilleur temps :
+          <span id="bestchrono">00:00:000</span>
+        </p>
+      </div>
 
-
-  <div class="memory-container">
-    <p>Nombre de coups : <span class="nbrCoups"></span></p>
-    <div class="actions">
-      <button onclick="restart()">Try again</button>
-    </div>
-  </div>
-  
-
-
-
-
-
-
-
-
-    <script type="module" src="js/hell.js"></script>
-</body>
+      <div id="resultats" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <p></p>
+          <button type="button" id="rejouer">Rejouer</button>
+        </div>
+      </div>
+      <br />
+      <section class="deck container flex">
+        <div class="card">
+          <div class="inner" value="0">
+            <p class="front">&#10068;</p>
+            <p class="back back1"></p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="inner" value="1">
+            <p class="front">&#10068;</p>
+            <p class="back back2"></p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="inner" value="2">
+            <p class="front">&#10068;</p>
+            <p class="back back3"></p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="inner" value="3">
+            <p class="front">&#10068;</p>
+            <p class="back back4"></p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="inner" value="4">
+            <p class="front">&#10068;</p>
+            <p class="back back5"></p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="inner" value="5">
+            <p class="front">&#10068;</p>
+            <p class="back back6"></p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="inner" value="6">
+            <p class="front">&#10068;</p>
+            <p class="back back7"></p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="inner" value="7">
+            <p class="front">&#10068;</p>
+            <p class="back back8"></p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="inner" value="8">
+            <p class="front">&#10068;</p>
+            <p class="back back9"></p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="inner" value="9">
+            <p class="front">&#10068;</p>
+            <p class="back back10"></p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="inner" value="10">
+            <p class="front">&#10068;</p>
+            <p class="back back11"></p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="inner" value="11">
+            <p class="front">&#10068;</p>
+            <p class="back back12"></p>
+          </div>
+        </div>
+      </section>
+      <br />
+      <button type="button" id="playagain">Recommencer</button>
+    </main>
+    <script type="module" src="js/modules/hell.js"></script>
+  </body>
 </html>

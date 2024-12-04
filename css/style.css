@@ -1,106 +1,263 @@
-*{
+nav {
+  display: flex;
+  justify-content: space-around;
+}
+
+h1 {
+  display: flex;
+  justify-content: space-around;
+}
+
+main {
+  font-family: Arial, Helvetica, sans-serif;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
   margin: 0;
-  padding: 0;
 }
 
-.hell{
-  height: 100%;
-  width: 100%;
-  background-image: url("../img/hellfest-fond.jpg");
-  background-position: center;
-  background-size: auto;
-  position: absolute;
-}
-
-a{
-  text-align: center;
-  color: whitesmoke;
-}
-
-body{
-  min-height: 100vh;
-  min-width: 100vw;
-  background-color: darkgray;
-  color: whitesmoke;
-}
-
-h1{
-  text-align: center;
-  text-decoration: overline;
-  font-weight: 700;
-  font-size: 50px;
-}
-
-p{
-  text-align: center;
-  font-size: 30px;
-  font-weight: bold;
-}
-
-.actions {
-  display: flex;
-  justify-content: center;
-}
-
-.actions button {
-  padding: 8px 16px;
-  font-size: 30px;
-  border-radius: 10px;
-  background-color: rgb(0, 0, 0);
-  color: whitesmoke;
-}
-
-.memory-container{
-  display: grid;
-  justify-content: center;
-  grid-gap: 16px;
-  grid-template-columns: repeat(6, 140px);
-  grid-template-rows: repeat(2z, calc(140px / 2 * 3));
-}
-
-.card {
-  height: calc(140px / 2 * 3);
-  width: 140px;
-  border-radius: 10px;
-  background-color: white;
-  position: relative;
-  transform-style: preserve-3d;
-  transition: all 0.5s ease-in-out;
-}
-
-.front-image {
-  width: 60px;
-  height: 60px;
-}
-
-.card.flipped{
-  transform: rotateY(180deg);
-}
-
-.front, .back {
-  backface-visibility: hidden;
-  position: absolute;
-  border-radius: 10px;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-}
-
-.card .front {
-  display: flex;
-  justify-content: center;
+p {
+  padding: 10px;
   align-items: center;
 }
 
-.card .back {
-  background-image: url(../img/question.svg);
-  background-position: center center;
-  background-size: cover;
-  backface-visibility: hidden;
+div {
+  padding: 10px;
+  align-items: center;
 }
 
-.card .front {
+.game-container {
+  display: grid;
+  grid-template-columns: repeat(4, 100px);
+  gap: 15px;
+}
+
+.card {
+  width: 100px;
+  height: 100px;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.card-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.card-front .card-inner {
   transform: rotateY(180deg);
 }
 
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card-front {
+  background-color: #3498db;
+  transform: rotateY(180deg);
+}
+
+.card-back img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+button {
+  width: fit-content;
+  padding: 10px 20px;
+  background-color: #03a9f4;
+  color: #fff;
+  border: 0px solid #333;
+  border-radius: 3px;
+  text-transform: uppercase;
+}
+
+button:hover {
+  background-color: #0095d8;
+}
+
+#chronotime {
+  border: none;
+}
+
+header,
+header a {
+  font-size: 1.5em;
+  margin: auto;
+  text-align: center;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+body {
+  margin: 0;
+  width: 100%;
+  background-color: #333;
+  padding: 20px 0;
+}
+
+input {
+  background-color: #333;
+}
+
+p,
+a,
+ul,
+div,
+input,
+button {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.05em;
+  color: #fff;
+}
+
+h1,
+h2,
+h3,
+h4,
+title {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  text-align: center;
+}
+
+button {
+  width: fit-content;
+  padding: 10px 20px;
+  background-color: #03a9f4;
+  color: #fff;
+  border: 0px solid #333;
+  border-radius: 3px;
+  text-transform: uppercase;
+}
+
+button:hover {
+  background-color: #0095d8;
+}
+
+#chronotime {
+  border: none;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.container {
+  width: 650px;
+  margin: auto;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: 150px;
+  height: 150px;
+  cursor: pointer;
+  padding-bottom: 10px;
+}
+
+.inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.4s;
+}
+
+.inner p {
+  font-size: 3em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+
+.card .flipped {
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+  transform-style: preserve-3d;
+}
+
+.front,
+.back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 3px;
+}
+
+.front {
+  background: khaki;
+}
+
+.back {
+  background: lightblue;
+  transform: rotateY(180deg);
+  transition: all 0.4s ease-out;
+}
+
+.foundCard {
+  background-color: #b5e25a;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: #111111;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #333;
+  width: 80%;
+  text-align: center;
+  border-radius: 3px;
+}
+
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
