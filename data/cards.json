@@ -1,40 +1,41 @@
 {
-  "images": [
-  {
-    "id" : 1,
-    "url": "./assets/chili.png"
-  },
-  {
-    "id" : 2,
-    "url": "./assets/grapes.png"
-  },
-  {
-    "id" : 3,
-    "url": "./assets/lemon.png"
-  },
-  {
-    "id" : 4,
-    "url": "./assets/orange.png"
-  },
-  {
-    "id" : 5,
-    "url": "./assets/pineapple.png"
-  },
-  {
-    "id" : 6,
-    "url": "./assets/strawberry.png"
-  },
-  {
-    "id" : 7,
-    "url": "./assets/tomato.png"
-  },
-  {
-    "id" : 8,
-    "url": "./assets/watermelon.png"
-  },
-  {
-    "id" : 9,
-    "url": "./assets/cherries.png"
-  }
-]
+  "cardSets": [
+    {
+      "id": "fruits",
+      "values": [
+        "grapes",
+        "lemon",
+        "orange",
+        "pineapple",
+        "strawberry",
+        "tomato",
+        "watermelon",
+        "cherries"
+      ],
+      "images": {
+        "grapes": "./assets/grapes.png",
+        "lemon": "./assets/lemon.png",
+        "orange": "./assets/orange.png",
+        "pineapple": "./assets/pineapple.png",
+        "strawberry": "./assets/strawberry.png",
+        "tomato": "./assets/tomato.png",
+        "watermelon": "./assets/watermelon.png",
+        "cherries": "./assets/cherries.png"
+      }
+    },
+    {
+      "id": "animals",
+      "values": ["1", "2", "3", "4", "5", "6", "7", "8"],
+      "images": {
+        "1": "./assets/1.jpg",
+        "2": "./assets/2.jpg",
+        "3": "./assets/3.jpg",
+        "4": "./assets/4.jpg",
+        "5": "./assets/5.jpg",
+        "6": "./assets/6.jpg",
+        "7": "./assets/7.jpg",
+        "8": "./assets/8.jpg"
+      }
+    }
+  ]
 }

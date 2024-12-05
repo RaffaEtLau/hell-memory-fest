@@ -2,8 +2,8 @@ import {
   namValidator,
   emailValidator,
   passwordValidator,
-  checkPasswordValidator
-} from './validators.js'
+  checkPasswordValidator,
+} from "./validators.js";
 
 import { saveToLocalStorage } from "./storage.js";
 
