@@ -4,6 +4,7 @@ const gameState = {
   score: 0,
   matchedPairs: 0,
   totalPairs: 0,
+  cardImages: {},
 };
 
 const scoreBoard = document.getElementById("scoreBoard");
@@ -32,6 +33,8 @@ function createCards(cardSet) {
   gameBoard.innerHTML = "";
   // const selectedCards = this.cardSet.slice(0, 8)
   const { values, images } = cardSet;
+  gameState.cardImages = images;
+
   const doubleValues = shuffleArray([...values, ...values]);
 
   gameState.totalPairs = values.length;
@@ -39,14 +42,29 @@ function createCards(cardSet) {
   gameState.selectedCards = [];
   gameState.score = 0;
   gameState.matchedPairs = 0;
+
   doubleValues.forEach((value) => {
     const card = document.createElement("div");
     card.classList.add("card");
     card.setAttribute("data-value", value);
     card.setAttribute("data-matched", "false");
-    card.style.backgroundImage = `url(${images[value]})`;
-    card.style.backgroundSize = "cover";
-    card.style.backgroundColor = "grey";
+
+    const cardInner = document.createElement("div");
+    cardInner.classList.add("card-inner");
+
+    const cardFront = document.createElement("div");
+    cardFront.classList.add("card-front");
+    cardFront.style.backgroundImage = `url('./img/facearriere.png')`;
+    cardFront.style.backgroundSize = "cover";
+
+    const cardBack = document.createElement("div");
+    cardBack.classList.add("card-back");
+    cardBack.style.backgroundImage = `url(${images[value]})`;
+    cardBack.style.backgroundSize = "cover";
+
+    cardInner.appendChild(cardFront);
+    cardInner.appendChild(cardBack);
+    card.appendChild(cardInner);
 
     card.addEventListener("click", flipCard);
     gameBoard.appendChild(card);
@@ -55,15 +73,18 @@ function createCards(cardSet) {
 }
 
 function flipCard(event) {
-  const card = event.target;
+  const card = event.target.closest(".card");
+
+  console.log(card);
+
   if (
     card.getAttribute("data-matched") === "true" ||
-    gameState.selectedCards.includes(card) ||
+    card.classList.contains("flipped") ||
     gameState.selectedCards.length >= 2
   )
     return;
 
-  card.style.backgroundColor = "transparent";
+  cardInner.classList.add("flipped");
   gameState.selectedCards.push(card);
 
   if (gameState.selectedCards.length === 2) {
@@ -77,20 +98,19 @@ function checkMatch() {
   if (isMatch) {
     card1.setAttribute("data-matched", "true");
     card2.setAttribute("data-matched", "true");
-    card1.style.opacity = "0.5";
-    card2.style.opacity = "0.5";
+    card1.classList.add("matched");
+    card2.classList.add("matched");
     gameState.matchedPairs++;
-    
+
     if (gameState.matchedPairs === gameState.totalPairs) {
       setTimeout(() => alert("Bravo !!! Vous avec gagné !"), 500);
     }
   } else {
-    card1.style.backgroundColor = "grey";
-    card2.style.backgroundColor = "grey";
+    card1.classList.remove("flipped");
+    card2.classList.remove("flipped");
   }
   gameState.score++;
-  scoreBoard.textContent = `Score : ${gameState.score}`;
-
+  scoreBoard.textContent = `Nombre de coups : ${gameState.score}`;
   gameState.selectedCards = [];
 }
 
