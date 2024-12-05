@@ -121,4 +121,11 @@ async function initializeGame() {
   }
 }
 
+document.addEventListener("keydown", function (event) {
+  if (event.code === "Space") {
+    event.preventDefault(); // Empêche le comportement par défaut de la barre d'espace
+    location.reload();
+  }
+});
+
 document.addEventListener("DOMContentLoaded", initializeGame);

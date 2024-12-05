@@ -5,7 +5,9 @@ body {
   font-family: Arial, sans-serif;
   background-color: #f0f0f0;
 }
-
+main {
+  width: 80%;
+}
 #gameBoard {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -44,7 +46,6 @@ body {
 }
 
 .card-front {
-  background-image: url("./img/facearriere.png");
   background-size: cover;
   background-position: center;
 }
@@ -55,9 +56,12 @@ body {
   transform: rotateY(180deg);
 }
 
-.card.matched .card-inner {
+.card.matched .card-back .card-inner {
   opacity: 0.5;
+  backface-visibility: hidden;
+  transform: rotateY(180deg);
 }
+
 
 #scoreBoard {
   text-align: center;
