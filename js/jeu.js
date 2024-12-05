@@ -84,7 +84,7 @@ function flipCard(event) {
   )
     return;
 
-  cardInner.classList.add("flipped");
+  card.classList.add("flipped");
   gameState.selectedCards.push(card);
 
   if (gameState.selectedCards.length === 2) {
