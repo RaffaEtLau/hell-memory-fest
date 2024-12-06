@@ -9,6 +9,8 @@ import { saveToLocalStorage } from "./storage.js";
 
 import { displayFieldError, clearFieldErrors } from "./errorDisplay.js";
 
+import { checkPasswordStrength } from "./password.js";
+
 function handleSubmit(event) {
   event.preventDefault();
   clearFieldErrors();
@@ -58,5 +60,22 @@ function handleSubmit(event) {
   alert("Entrée aux enfers réussie !");
   event.currentTarget.reset();
 }
+
+document.getElementById('passwordUser').addEventListener('input', function(event) {
+  const passwordInput = document.getElementById('passwordUser')
+  const confirmPasswordInput = event.target
+  const levelPassword = document.querySelector('#levelPassword')
+
+  if (passwordInput.value !== confirmPasswordInput.value) {
+    confirmPasswordInput.classList.add("error");
+    levelPassword.textContent = "Les mots de passe ne correspondent pas";
+    levelPassword.className = "strength-weak";
+  } else {
+    confirmPasswordInput.classList.remove("error");
+    levelPassword.textContent = "";
+    levelPassword.className = "";
+  }
+})
+
 
 document.getElementById("hellUser").addEventListener("submit", handleSubmit);
