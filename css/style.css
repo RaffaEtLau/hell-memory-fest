@@ -62,7 +62,6 @@ main {
   transform: rotateY(180deg);
 }
 
-
 #scoreBoard {
   text-align: center;
   font-size: 1.2em;
@@ -70,4 +69,133 @@ main {
   padding: 10px;
   background-color: #e0e0e0;
   border-radius: 5px;
+}
+
+nav {
+  background-color: #000;
+  display: flex;
+  justify-content: center;
+  padding: 15px 0;
+  box-shadow: 0 5px 15px rgba(255, 0, 0, 0.3);
+}
+
+nav a {
+  color: #ff0000;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: "Arial Black", sans-serif;
+  font-weight: bold;
+  margin: 0 20px;
+  letter-spacing: 2px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+nav a::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background-color: #ff0000;
+  bottom: -5px;
+  left: 0;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+nav a:hover {
+  color: #ff4444;
+}
+
+nav a:hover::before {
+  transform: scaleX(1);
+}
+
+form {
+  background-color: #1a1a1a;
+  max-width: 500px;
+  margin: 30px auto;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+}
+
+form div {
+  margin-bottom: 20px;
+}
+
+form label {
+  color: #ff0000;
+  text-transform: uppercase;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+
+form input {
+  width: 100%;
+  padding: 12px;
+  background-color: #2a2a2a;
+  border: 2px solid #ff0000;
+  color: #ffffff;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+form input:focus,
+form textarea:focus {
+  outline: none;
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+  border-color: #ff4444;
+}
+
+form input[type="submit"] {
+  background-color: #ff0000;
+  color: black;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+form input[type="submit"]:hover {
+  background-color: #ff4444;
+}
+
+.error {
+  color: #f0f0f0;
+}
+
+button[type="submit"], 
+button[type="reset"] {
+  padding: 12px 25px;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 1px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button[type="submit"] {
+  background-color: #ff0000;
+  color: black;
+  border: 2px solid black;
+}
+
+button[type="submit"]:hover {
+  background-color: #ff4444;
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+}
+
+button[type="reset"] {
+  background-color: #2a2a2a;
+  color: #ff0000;
+  border: 2px solid #ff0000;
+}
+
+button[type="reset"]:hover {
+  background-color: #ff0000;
+  color: black;
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
 }
