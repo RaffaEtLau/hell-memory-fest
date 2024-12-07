@@ -1,40 +1,47 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hell-Inscription</title>
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-  <!-- banderole helfest -->
-  <img src="./img/hellfest.jpg" alt="banderole hellfest" height="200" width="600">
-  <h1>Connexion</h1>
-  <nav>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hell-Inscription</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <img
+      src="./img/hellfest.jpg"
+      alt="banderole hellfest"
+      height="200"
+      width="600"
+    />
+    <h1>Connexion</h1>
+    <nav>
       <a href="index.html">Accueil</a>
       <a href="inscription.html">Inscription</a>
       <a href="connexion.html">Connexion</a>
       <a href="profil.html">Profil</a>
       <a href="jeu.html">Highway to hell !</a>
-  </nav>
-  <div>
-    <h2>Retour aux enfers</h2>
-    <form id="hellConnexion">
-      <div>
-        <label for="emailUser">Entrez votre email</label><br>
-        <input type="email" id="emailUser" placeholder="satan.enfer@hellfest.com" required>
-        <div id="emailError" class="error"></div>
-      </div>
-      <div>
-        <label for="passwordUser">Mot de passe</label><br>
-        <input type="password" id="passwordUser" required>
-        <div id="passwordError" class="error"></div>
-      </div>
-    </form>
-  </div>
-
-
-
-  <script type="module" src="js/jeu.js"></script>
-</body>
+    </nav>
+    <div>
+      <h2>Retour aux enfers</h2>
+      <form id="hellConnexion">
+        <div>
+          <label for="emailUser">Entrez votre email</label><br />
+          <input
+            type="email"
+            id="emailUser"
+            placeholder="satan.enfer@hellfest.com"
+            required
+          />
+          <div id="emailError" class="error"></div>
+        </div>
+        <div>
+          <label for="passwordUser">Mot de passe</label><br />
+          <input type="password" id="passwordUser" required />
+          <div id="passwordError" class="error"></div>
+        </div>
+        <button type="submit">Se connecter</button>
+      </form>
+    </div>
+    <script type="module" src="./js/connexion.js"></script>
+  </body>
 </html>

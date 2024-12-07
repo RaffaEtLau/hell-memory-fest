@@ -3,15 +3,15 @@ import {
   emailValidator,
   passwordValidator,
   checkPasswordValidator,
-} from "./validator.js";
+} from "./modules/validator.js";
 
-import { saveToLocalStorage } from "./storage.js";
+import { saveToLocalStorage } from "./modules/storage.js";
 
-import { displayFieldError, clearFieldErrors } from "./errorDisplay.js";
+import { displayFieldError, clearFieldErrors } from "./modules/errorDisplay.js";
 
-import { checkPasswordStrength } from "./password.js";
+import { checkPasswordStrength } from "./modules/password.js";
 
-import { isDuplicateUser } from "./duplicate.js";
+import { isDuplicateUser } from "./modules/duplicate.js";
 
 async function handleSubmit(event) {
   event.preventDefault();
