@@ -28,13 +28,21 @@ function shuffleArray(array) {
   return array.sort(() => Math.random() - 0.5);
 }
 
-function createCards(cardSet) {
+function getMemorySize() {
+  const currentUserEmail = localStorage.getItem("currentUserEmail");
+  const users = JSON.parse(localStorage.getItem("hellUsers")) || [];
+  const currentUser = users.find((user) => user.email === currentUserEmail);
+  return currentUser ? currentUser.sizeChoice : null;
+}
+
+function createCards(cardSet, totalCardsNeeded) {
   const gameBoard = document.getElementById("gameBoard");
   gameBoard.innerHTML = "";
   // const selectedCards = this.cardSet.slice(0, 8)
   const { values, images } = cardSet;
   gameState.cardImages = images;
 
+  const selectedValues = values.slice(0, totalCardsNeeded / 2);
   const doubleValues = shuffleArray([...values, ...values]);
 
   gameState.totalPairs = values.length;
@@ -116,8 +124,32 @@ function checkMatch() {
 
 async function initializeGame() {
   const cardSet = await loadCardConfig();
-  if (cardSet) {
-    createCards(cardSet);
+  const memorySize = getMemorySize();
+  if (!cardSet || !cardSet.values) {
+    alert("Erreur : jeu de cartes introuvables");
+    return;
+  }
+
+  const totalCardsNeeded = getTotalCardsNeeded(memorySize);
+  if (totalCardsNeeded > cardSet.value.length) {
+    alert(
+      "Pas assez de cartes pour cette taille. Veuillez choisir une taille plus petite"
+    );
+    return;
+  }
+  createCards(cardSet, totalCardsNeeded);
+}
+
+function getTotalCardsNeeded(sizeChoice) {
+  switch (sizeChoice) {
+    case "3x3":
+      return 9;
+    case "4x4":
+      return 16;
+    case "5x5":
+      return 25;
+    default:
+      return 0;
   }
 }
 

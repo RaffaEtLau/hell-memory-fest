@@ -75,6 +75,7 @@ async function handleSubmit(event) {
   console.log("Has Error", hasError);
 
   if (hasError) {
+    window.scrollTo({ top: 0, behavior: "smooth" });
     return;
   }
 

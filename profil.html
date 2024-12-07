@@ -13,7 +13,7 @@
       height="200"
       width="600"
     />
-    <h1>Profil</h1>
+    <h1>Profil de démon</h1>
     <nav>
       <a href="index.html">Accueil</a>
       <a href="inscription.html">Inscription</a>
@@ -21,21 +21,35 @@
       <a href="profil.html">Profil</a>
       <a href="jeu.html">Highway to hell !</a>
     </nav>
-    <form id="profilUser">
+
+    <div id="errorContainer" style="display: none; color: red"></div>
+
+    <form id="profilUser" style="display: none">
       <div>
-        <label for="nomUser">Nom de démon</label><br />
-        <input type="name" id="nomUser" placeholder="Satan" required />
+        <label for="nomUser">Nom du démon</label><br />
+        <input type="text" id="nomUser" placeholder="Satan" required readonly />
         <div id="nameError" class="error"></div>
       </div>
       <div>
-        <label for="emailUser">Entrez votre email</label><br />
+        <label for="emailUser">Email du démon</label><br />
         <input
           type="email"
           id="emailUser"
           placeholder="satan.enfer@hellfest.com"
           required
+          readonly
         />
         <div id="emailError" class="error"></div>
+      </div>
+      <div>
+        <label for="profilPicture">Photo de démon</label><br />
+        <img
+          id="profilImage"
+          src="./img/facearriere.png"
+          alt="Photo de profil"
+          style="width: 100px; height: 100px"
+        />
+        <input type="file" id="profilPicture" accept="image/*" />
       </div>
       <div>
         <label for="memoryChoice">Choix du Memory</label>
@@ -46,14 +60,14 @@
           <option value="3">3</option>
           <option value="4">4</option>
         </select>
-        <img src="" alt="" srcset="" />
       </div>
       <div>
         <label for="sizeChoice">Taille du Memory</label>
         <select name="sizes" id="sizeChoice">
-          <option value="">Motivé ?</option>
-          <option value="3*3">3*3</option>
-          <option value="4*4">4*4</option>
+          <option value="">Choisissez la taille</option>
+          <option value="3x3">3x3</option>
+          <option value="4x4">4x4</option>
+          <option value="5x5">5x5</option>
         </select>
       </div>
       <button type="submit">Enregistrer les options</button>
@@ -76,6 +90,6 @@
       </tr>
     </th>
 
-    <script type="module" src="js/hell.js"></script>
+    <script type="module" src="./js/profil.js"></script>
   </body>
 </html>

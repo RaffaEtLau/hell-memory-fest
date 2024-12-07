@@ -21,8 +21,11 @@ function handleLogin(event) {
     return;
   }
 
-  alert("Connexion réussie !");
-  window.location.href = "jeu.html";
+  if (user.password === password) {
+    localStorage.setItem("currentUserEmail", email);
+    alert("Connexion réussie !");
+    window.location.href = "profil.html";
+  }
 }
 
 document
