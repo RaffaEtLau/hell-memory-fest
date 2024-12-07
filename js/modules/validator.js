@@ -1,9 +1,5 @@
 export function nameValidator(name) {
-  if (name.length >= 3) {
-    return true;
-  } else {
-    return false;
-  }
+  return name.length >= 3;
 }
 
 export function emailValidator(email) {
@@ -12,15 +8,10 @@ export function emailValidator(email) {
 }
 
 export function passwordValidator(password) {
-  const passwordRegex =
-    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^_&*])(?=.{6,})/;
+  const passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^_&*])(?=.{6,})/;
   return passwordRegex.test(password);
 }
 
 export function checkPasswordValidator(checkPassword, password) {
-  if (checkPassword === password) {
-    return false;
-  } else {
-    return true;
-  }
+  return checkPassword === password;
 }

@@ -1,5 +1,9 @@
 export function saveToLocalStorage(userData) {
-  const users = JSON.parse(localStorage.getItem("hellUser")) ?? [];
+  const users = JSON.parse(localStorage.getItem("hellUsers")) ?? [];
   users.push(userData);
-  localStorage.setItem("userData", JSON.stringify(users));
+  localStorage.setItem("hellUsers", JSON.stringify(users));
+}
+
+export function getUsersFromLocalStorage() {
+  return JSON.parse(localStorage.getItem("hellUser")) ?? [];
 }

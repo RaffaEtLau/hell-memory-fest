@@ -11,6 +11,8 @@ import { displayFieldError, clearFieldErrors } from "./errorDisplay.js";
 
 import { checkPasswordStrength } from "./password.js";
 
+import { isDuplicateUser } from "./duplicate.js";
+
 function handleSubmit(event) {
   event.preventDefault();
   clearFieldErrors();
@@ -22,17 +24,19 @@ function handleSubmit(event) {
     checkPassword: document.getElementById("checkPasswordUser").value,
   };
 
-  console.log(formData);
-
+  const levelPassword = document.querySelector("#levelPassword");
   let hasError = false;
 
   if (!nameValidator(formData.name)) {
-    displayFieldError("name", "Nom invalide");
+    displayFieldError(
+      "name",
+      "Le nom de démon doit contenir au moins 3 caractères"
+    );
     hasError = true;
   }
 
   if (!emailValidator(formData.email)) {
-    displayFieldError("email", "Email invalide");
+    displayFieldError("email", "L'adresse email est invalide");
     hasError = true;
   }
 
@@ -44,38 +48,58 @@ function handleSubmit(event) {
     hasError = true;
   }
 
-  if (!checkPasswordValidator(formData.checkPassword)) {
+  if (!checkPasswordValidator(formData.checkPassword, formData.password)) {
     displayFieldError(
       "checkPassword",
-      "Les mots de passe ne sont pas identiques"
+      "Les mots de passe ne correspondent pas"
     );
     hasError = true;
   }
+
+  document.getElementById("nameUser").addEventListener("input", (event) => {
+    const name = event.target.value;
+    const { isNameDuplicate } = isDuplicateUser(name);
+
+    if (isNameDuplicate) {
+      displayFieldError("name", "Ce nom de démon est déjà utilisé");
+      hasError = true;
+    }
+  });
+
+  document.getElementById("emailUser").addEventListener("input", (event) => {
+    const email = event.target.value;
+    const { isEmailDuplicate } = isDuplicateUser(email);
+
+    if (isEmailDuplicate) {
+      displayFieldError("email", "Cet email est déjà utilisé");
+      hasError = true;
+    }
+  });
 
   if (hasError) {
     return;
   }
 
   saveToLocalStorage(formData);
-  alert("Entrée aux enfers réussie !");
+  alert("Bienvenue aux enfers !");
   event.currentTarget.reset();
+  levelPassword.textContent = "";
 }
 
-document.getElementById('passwordUser').addEventListener('input', function(event) {
-  const passwordInput = document.getElementById('passwordUser')
-  const confirmPasswordInput = event.target
-  const levelPassword = document.querySelector('#levelPassword')
+document.getElementById("passwordUser").addEventListener("input", (event) => {
+  const password = event.target.value;
+  const strength = checkPasswordStrength(password);
 
-  if (passwordInput.value !== confirmPasswordInput.value) {
-    confirmPasswordInput.classList.add("error");
-    levelPassword.textContent = "Les mots de passe ne correspondent pas";
-    levelPassword.className = "strength-weak";
+  const levelPassword = document.querySelector("#levelPassword");
+  levelPassword.textContent = `Force du mot de passe : ${strength}`;
+
+  if (strength === "faible") {
+    levelPassword.style.color = "red";
+  } else if (strength === "moyen") {
+    levelPassword.style.color = "orange";
   } else {
-    confirmPasswordInput.classList.remove("error");
-    levelPassword.textContent = "";
-    levelPassword.className = "";
+    levelPassword.style.color = "green";
   }
-})
-
+});
 
 document.getElementById("hellUser").addEventListener("submit", handleSubmit);

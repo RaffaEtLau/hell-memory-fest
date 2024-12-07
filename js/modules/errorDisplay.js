@@ -1,6 +1,7 @@
 export function displayFieldError(fieldId, message) {
   const errorElement = document.getElementById(`${fieldId}Error`);
   errorElement.textContent = message;
+  errorElement.style.color = "red";
 }
 
 export function clearFieldErrors() {
