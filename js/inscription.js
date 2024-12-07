@@ -27,7 +27,7 @@ async function handleSubmit(event) {
   const levelPassword = document.querySelector("#levelPassword");
   let hasError = false;
 
-  const { isNameDuplicate, isEmailDuplicate } = await isDuplicateUser(
+  const { isNameDuplicate, isEmailDuplicate } = isDuplicateUser(
     formData.name,
     formData.email
   );
@@ -80,13 +80,14 @@ async function handleSubmit(event) {
 
   saveToLocalStorage(formData);
   alert("Bienvenue aux enfers !");
+  window.location.href = "connexion.html";
   event.currentTarget.reset();
   levelPassword.textContent = "";
 }
 
 document.getElementById("nameUser").addEventListener("input", async (event) => {
   const name = event.target.value;
-  const { isNameDuplicate } = await isDuplicateUser(
+  const { isNameDuplicate } = isDuplicateUser(
     name,
     document.getElementById("emailUser").value
   );
@@ -103,7 +104,7 @@ document
   .getElementById("emailUser")
   .addEventListener("input", async (event) => {
     const email = event.target.value;
-    const { isEmailDuplicate } = await isDuplicateUser(
+    const { isEmailDuplicate } = isDuplicateUser(
       document.getElementById("nameUser").value,
       email
     );
@@ -131,6 +132,5 @@ document.getElementById("passwordUser").addEventListener("input", (event) => {
     levelPassword.style.color = "green";
   }
 });
-
 
 document.getElementById("hellUser").addEventListener("submit", handleSubmit);
