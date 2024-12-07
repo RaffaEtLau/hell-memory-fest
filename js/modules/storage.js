@@ -5,5 +5,7 @@ export function saveToLocalStorage(userData) {
 }
 
 export function getUsersFromLocalStorage() {
-  return JSON.parse(localStorage.getItem("hellUser")) ?? [];
+  const users = JSON.parse(localStorage.getItem("hellUsers")) ?? [];
+  console.log("Users from local storage", users);
+  return users;
 }

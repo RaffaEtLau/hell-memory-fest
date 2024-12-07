@@ -13,7 +13,7 @@ import { checkPasswordStrength } from "./password.js";
 
 import { isDuplicateUser } from "./duplicate.js";
 
-function handleSubmit(event) {
+async function handleSubmit(event) {
   event.preventDefault();
   clearFieldErrors();
 
@@ -26,6 +26,22 @@ function handleSubmit(event) {
 
   const levelPassword = document.querySelector("#levelPassword");
   let hasError = false;
+
+  const { isNameDuplicate, isEmailDuplicate } = await isDuplicateUser(
+    formData.name,
+    formData.email
+  );
+  console.log("Duplication Check", isNameDuplicate, isEmailDuplicate);
+
+  if (isNameDuplicate) {
+    displayFieldError("name", "Ce nom de démon est déjà utilisé");
+    hasError = true;
+  }
+
+  if (isEmailDuplicate) {
+    displayFieldError("email", "Cet email est déjà utilisé");
+    hasError = true;
+  }
 
   if (!nameValidator(formData.name)) {
     displayFieldError(
@@ -56,25 +72,7 @@ function handleSubmit(event) {
     hasError = true;
   }
 
-  document.getElementById("nameUser").addEventListener("input", (event) => {
-    const name = event.target.value;
-    const { isNameDuplicate } = isDuplicateUser(name);
-
-    if (isNameDuplicate) {
-      displayFieldError("name", "Ce nom de démon est déjà utilisé");
-      hasError = true;
-    }
-  });
-
-  document.getElementById("emailUser").addEventListener("input", (event) => {
-    const email = event.target.value;
-    const { isEmailDuplicate } = isDuplicateUser(email);
-
-    if (isEmailDuplicate) {
-      displayFieldError("email", "Cet email est déjà utilisé");
-      hasError = true;
-    }
-  });
+  console.log("Has Error", hasError);
 
   if (hasError) {
     return;
@@ -85,6 +83,38 @@ function handleSubmit(event) {
   event.currentTarget.reset();
   levelPassword.textContent = "";
 }
+
+document.getElementById("nameUser").addEventListener("input", async (event) => {
+  const name = event.target.value;
+  const { isNameDuplicate } = await isDuplicateUser(
+    name,
+    document.getElementById("emailUser").value
+  );
+  console.log("Name Input Check", isNameDuplicate);
+
+  if (isNameDuplicate) {
+    displayFieldError("name", "Ce nom de démon est déjà utilisé");
+  } else {
+    clearFieldErrors();
+  }
+});
+
+document
+  .getElementById("emailUser")
+  .addEventListener("input", async (event) => {
+    const email = event.target.value;
+    const { isEmailDuplicate } = await isDuplicateUser(
+      document.getElementById("nameUser").value,
+      email
+    );
+    console.log("Email Input Check", isEmailDuplicate);
+
+    if (isEmailDuplicate) {
+      displayFieldError("email", "Cet email est déjà utilisé");
+    } else {
+      clearFieldErrors();
+    }
+  });
 
 document.getElementById("passwordUser").addEventListener("input", (event) => {
   const password = event.target.value;
@@ -101,5 +131,6 @@ document.getElementById("passwordUser").addEventListener("input", (event) => {
     levelPassword.style.color = "green";
   }
 });
+
 
 document.getElementById("hellUser").addEventListener("submit", handleSubmit);

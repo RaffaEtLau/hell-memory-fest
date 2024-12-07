@@ -2,6 +2,7 @@ import { getUsersFromLocalStorage } from "./storage.js";
 
 export function isDuplicateUser(name, email) {
   const users = getUsersFromLocalStorage();
+
   const isNameDuplicate = users.some(
     (user) => user.name.toLowerCase() === name.toLowerCase()
   );
